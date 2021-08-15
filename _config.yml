@@ -1,0 +1,25 @@
+url: "https://furkanonder.github.io/"
+title: Furkan Önder
+disqus: ""
+google_analytics: "UA-108363583-1"
+
+timezone: "Europe/Istanbul"
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+permalink: /:title
+paginate: 5
+
+plugins:
+- jekyll-paginate
+- jekyll-feed
+- jekyll-admin
+- jekyll-sitemap
+- jekyll-seo-tag
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME

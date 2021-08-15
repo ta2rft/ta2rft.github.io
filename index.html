@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://furkanonder.github.io/">furkanönder</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="https://furkanonder.github.io/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/archive/">Archive</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="posts-list">
+  {% for post in paginator.posts %}
+  <article class="postPreviewBox">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+      <h2 class="postTitle">{{ post.title }}</h2>
+      {% if post.subtitle %}
+        <h3 class="postSubTitle">
+          {{ post.subtitle }}
+        </h3>
+      {% endif %}
+    </a>
+    <p class="postMeta">
+      <time datetime='{{ post.date | %-d %B %Y" }}'>
+        {{ post.date | date: "%-d %B %Y" }}
+      </time>
+    </p>
+    <div class="postPreviewContent">
+      {{ post.content | truncatewords: 30 | strip_html | xml_escape}}
+      <br/><br/>
+      <a href="{{ post.url | prepend: site.baseurl }}" class="readMoreLink">&raquo; [Read&nbsp;more...]</a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+  <ul class="pager main-pager">
+  {% if paginator.previous_page %}
+    <li class="previous">
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; New Posts</a>
+    </li>
+  {% endif %}
+  {% if paginator.next_page %}
+    <li class="next">
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Old Posts &rarr;</a>
+    </li>
+  {% endif %}
+  </ul>
+{% endif %}
